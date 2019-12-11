@@ -8,11 +8,9 @@ json='curl -s -X GET https://api.github.com/repos/nvm-sh/nvm/releases/latest'
 prop='name:'
 apiURL="$(echo "`jsonval`" | cut -d' ' -f2)"
 
-nvm.sh(){
-   `curl -o- https://raw.githubusercontent.com/creationix/nvm/$apiURL/install.sh | bash`
-   export NVM_DIR="$HOME/.nvm";
-   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh";  # This loads nvm
-   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion";  # This loads nvm bash_completion
-   nvm ls-remote;
-   nvm install 10.15 --latest-npm;
-}
+`curl -o- https://raw.githubusercontent.com/creationix/nvm/$apiURL/install.sh | bash`
+export NVM_DIR="$HOME/.nvm";
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh";  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion";  # This loads nvm bash_completion
+nvm ls-remote;
+nvm install 10.15 --latest-npm -y;

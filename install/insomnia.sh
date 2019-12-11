@@ -1,1 +1,1 @@
-sudo snap install insomnia
+sudo snap install insomnia -y;
